@@ -1,0 +1,4 @@
+test,time_s,laps_equivalent,average_lap_time_s_estimated,average_speed_mps,line_lost_ratio,oscillations_per_second
+test_1,76.060,4.546,16.731,0.326,0.1057,3.616
+test_2,76.060,7.320,10.390,0.526,0.0845,4.444
+test_3,76.060,7.020,10.835,0.504,0.0814,3.510

@@ -1,0 +1,82 @@
+{
+  "real_reference": {
+    "session": "session_20260423_154428",
+    "source_dataset": "telemetria/dataset/linefollower_ai_dataset.jsonl",
+    "source_summary": "telemetria/output/dataset_guide_session_20260423_154428.json",
+    "source_real_photo": "Carro_Pista.png",
+    "robot_physical": {
+      "chassis_length_m": 0.175,
+      "chassis_width_m": 0.2,
+      "mass_kg": 0.43,
+      "wheel_diameter_m": 0.07,
+      "wheel_width_m": 0.026,
+      "wheel_base_m": 0.148,
+      "sensor_count": 4,
+      "sensor_spacing_m": 0.009,
+      "sensor_axis_distance_m": 0.145,
+      "motor_type": "TT 48:1",
+      "battery_type": "LiPo 2S 2200 mAh 45C",
+      "supply_voltage_v": 7.4
+    },
+    "controller_real": {
+      "kp": 0.45,
+      "ki": 0.225,
+      "kd": 0.32,
+      "base_speed_pwm": 100,
+      "base_max_pwm": 130,
+      "min_pwm": 60
+    },
+    "test_conditions_real": {
+      "track_area_cm": [
+        120,
+        120
+      ],
+      "behavior_notes": [
+        "El robot a veces toma el lado izquierdo en el cruce en lugar de continuar el paso deseado.",
+        "Presenta oscilaciones ocasionales, pero normalmente recupera la linea.",
+        "Se comporta de manera estable y responde bien en curvas."
+      ],
+      "operator_observation_average_lap_time_s_approx": 8.8,
+      "operator_observation_note": "El valor de 8.8 s se reporto por observacion manual del operador. Para la validacion cuantitativa del gemelo digital se priorizo la sesion telemetrica con marcas de vuelta, porque es la evidencia reproducible y trazable."
+    },
+    "assumptions": [
+      "El diametro indicado como '.7 cm' se interpreto como 7 cm (0.07 m), que coincide con una rueda amarilla generica de motoreductor TT.",
+      "La validacion temporal principal se hace contra la sesion telemetrica session_20260423_154428, porque contiene 7 vueltas marcadas manualmente y tiempos consistentes exportados desde Node-RED."
+    ],
+    "test_metrics_real": {
+      "running_rows": 333,
+      "clean_rows_completed_laps": 304,
+      "completed_laps": 7,
+      "total_time_s_completed_laps": 76.068,
+      "average_lap_time_s": 10.867,
+      "line_lost_ratio": 0.0658,
+      "average_pwm_norm": 0.4051,
+      "line_rms_norm": 0.5675,
+      "oscillations_total": 119,
+      "oscillations_per_second": 1.56
+    }
+  },
+  "simulation_metrics": {
+    "time_s": 76.05999999999912,
+    "distance_m": 38.014212666121175,
+    "track_length_m_approx": 5.46057868761925,
+    "laps_equivalent": 6.961572177745677,
+    "average_lap_time_s_estimated": 10.925692940905364,
+    "average_speed_mps": 0.49979243578913507,
+    "rms_error": 0.33512140125164125,
+    "max_error": 0.985040650406504,
+    "oscillations_total": 202,
+    "oscillations_per_second": 2.655798054167793,
+    "on_line_ratio": 0.9999342624244018,
+    "line_lost_ratio": 6.573757559824589e-05,
+    "history_rows": 15212
+  },
+  "comparison": {
+    "real_average_speed_mps_estimated": 0.5024918273322214,
+    "delta_speed_mps": -0.002699391543086349,
+    "delta_laps_equivalent_vs_real_completed": -0.03842782225432284,
+    "delta_average_lap_time_s": 0.058692940905363145,
+    "delta_line_lost_ratio": -0.06573426242440175,
+    "delta_oscillations_per_second": 1.0957980541677927
+  }
+}

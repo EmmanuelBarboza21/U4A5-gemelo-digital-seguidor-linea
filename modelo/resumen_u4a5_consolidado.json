@@ -1,0 +1,16 @@
+{
+  "dataset_samples": 322,
+  "classes": {
+    "curve": 223,
+    "recovery": 35,
+    "straight": 64
+  },
+  "model_accuracy": 0.8462,
+  "model_f1_macro": 0.7771,
+  "baseline_accuracy": 0.6923,
+  "baseline_f1_macro": 0.2727,
+  "real_lap_time_s": 10.867,
+  "sim_lap_time_s": 10.925692940905364,
+  "sim_on_line_ratio": 0.9999342624244018,
+  "notes": "Resumen consolidado para el repositorio limpio U4A5."
+}

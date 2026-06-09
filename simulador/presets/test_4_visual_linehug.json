@@ -1,0 +1,64 @@
+{
+  "version": 2,
+  "label": "test_4_visual_linehug",
+  "notes": "Preset visual para que el gemelo abrace mejor la linea en pantalla. Sacrifica velocidad respecto al robot real y no resuelve por completo la ambiguedad del cruce.",
+  "config": {
+    "robot": {
+      "mass": 0.43,
+      "wheelDiameter": 0.07,
+      "wheelBase": 0.148,
+      "sensorSpacing": 0.009,
+      "sensorAxisDistance": 0.145,
+      "rollingFriction": 0.04,
+      "lateralFriction": 7.6,
+      "chassisLength": 0.175,
+      "chassisWidth": 0.2
+    },
+    "motor": {
+      "voltage": 7.4,
+      "noLoadRPM_at_nominal": 415,
+      "stallTorque": 0.145,
+      "nominalVoltage": 7.4
+    },
+    "sensor": {
+      "samplingRate": 200,
+      "sensorRadius": 0.0018,
+      "samplingPoints": 9
+    },
+    "pid": {
+      "kp": 0.0022,
+      "ki": 0.0006,
+      "kd": 0.0019,
+      "baseSpeed": 0.42,
+      "maxSpeed": 0.62,
+      "integralLimit": 500,
+      "derivativeFilter": 0.7
+    },
+    "sim": {
+      "physicsDt": 0.001,
+      "telemetryDecimation": 5,
+      "simSpeed": 1.0
+    },
+    "guide": {
+      "enabled": true,
+      "mode": "path_follow",
+      "mix": 0.42,
+      "curveMix": 0.60,
+      "intersectionMix": 0.92,
+      "lateralGain": 1.55,
+      "headingGain": 1.10,
+      "maxCorrection": 1.35,
+      "pathSpeedMps": 0.50,
+      "speedResponse": 5.5,
+      "curvaturePwmGain": 0.18,
+      "searchBack": 20,
+      "searchWindow": 140,
+      "lookaheadPoints": 14
+    },
+    "start": {
+      "x": 0.9175154779193442,
+      "y": 1.089012233475384,
+      "theta": -0.20989533341674424
+    }
+  }
+}

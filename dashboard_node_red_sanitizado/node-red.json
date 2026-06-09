@@ -1,0 +1,3653 @@
+[
+    {
+        "id": "b1936d8f3e5a4c01",
+        "type": "tab",
+        "label": "LineFollower Industrial",
+        "disabled": false,
+        "info": "Dashboard industrial para ESP32-S3 PID"
+    },
+    {
+        "id": "ed4917a63bad2107",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#0eb8c0",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#097479",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "ui_tab_main_v2",
+        "type": "ui_tab",
+        "name": "Telemetria",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ui_tab_ctrl_v2",
+        "type": "ui_tab",
+        "name": "Control",
+        "icon": "settings",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ui_grp_status_v2",
+        "type": "ui_group",
+        "name": "Estado general",
+        "tab": "ui_tab_main_v2",
+        "order": 1,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "ui_grp_sensors_v2",
+        "type": "ui_group",
+        "name": "Sensores",
+        "tab": "ui_tab_main_v2",
+        "order": 2,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "ui_grp_pid_v2",
+        "type": "ui_group",
+        "name": "PID",
+        "tab": "ui_tab_main_v2",
+        "order": 3,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "ui_grp_motors_v2",
+        "type": "ui_group",
+        "name": "Motores",
+        "tab": "ui_tab_main_v2",
+        "order": 4,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "ui_grp_cmd_v2",
+        "type": "ui_group",
+        "name": "Comandos",
+        "tab": "ui_tab_ctrl_v2",
+        "order": 1,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "ui_grp_tune_v2",
+        "type": "ui_group",
+        "name": "Ajuste de control",
+        "tab": "ui_tab_ctrl_v2",
+        "order": 2,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "ui_grp_manual_v2",
+        "type": "ui_group",
+        "name": "Motores manuales",
+        "tab": "ui_tab_ctrl_v2",
+        "order": 3,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "ui_grp_diag_v2",
+        "type": "ui_group",
+        "name": "Diagnostico",
+        "tab": "ui_tab_ctrl_v2",
+        "order": 4,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "bt_port_config_v2",
+        "type": "serial-port",
+        "name": "ESP32_TURTLE_BT",
+        "serialport": "/dev/rfcomm0",
+        "serialbaud": "115200",
+        "databits": "8",
+        "parity": "none",
+        "stopbits": "1",
+        "waitfor": "",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": "10000"
+    },
+    {
+        "id": "617afa04124bc54f",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM5",
+        "serialbaud": "115200",
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "3def0e9772dc2eee",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM15",
+        "serialbaud": "115200",
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "77d3c671fc95d47a",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM15",
+        "serialbaud": "115200",
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "d78466c9e4c4f33a",
+        "type": "serial-port",
+        "name": "",
+        "serialport": "COM15",
+        "serialbaud": "115200",
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "1ba6ffd9e998830a",
+        "type": "ui_tab",
+        "name": "Telemetria",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "430d8eefbf5af971",
+        "type": "ui_tab",
+        "name": "Control",
+        "icon": "settings",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "052d9fbd4e57f8aa",
+        "type": "ui_group",
+        "name": "Estado general",
+        "tab": "1ba6ffd9e998830a",
+        "order": 1,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "a139ef16cf912f1c",
+        "type": "ui_group",
+        "name": "Sensores",
+        "tab": "1ba6ffd9e998830a",
+        "order": 2,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "cabd37601f3d19d4",
+        "type": "ui_group",
+        "name": "PID",
+        "tab": "1ba6ffd9e998830a",
+        "order": 3,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "6216c9440ea853bb",
+        "type": "ui_group",
+        "name": "Motores",
+        "tab": "1ba6ffd9e998830a",
+        "order": 4,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "578f179a4d25e30e",
+        "type": "ui_group",
+        "name": "Diagnostico",
+        "tab": "1ba6ffd9e998830a",
+        "order": 5,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "150a4ec3d148af74",
+        "type": "ui_group",
+        "name": "Comandos",
+        "tab": "430d8eefbf5af971",
+        "order": 1,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "4ba71e2a9f4c2b4b",
+        "type": "ui_group",
+        "name": "Ajuste de control",
+        "tab": "430d8eefbf5af971",
+        "order": 2,
+        "disp": true,
+        "width": "12"
+    },
+    {
+        "id": "ec1d4bcb7a5bccd6",
+        "type": "serial-port",
+        "name": "ESP32_TURTLE_BT_COM15",
+        "serialport": "COM15",
+        "serialbaud": "115200",
+        "databits": 8,
+        "parity": "none",
+        "stopbits": 1,
+        "waitfor": "",
+        "dtr": "none",
+        "rts": "none",
+        "cts": "none",
+        "dsr": "none",
+        "newline": "\\n",
+        "bin": "false",
+        "out": "char",
+        "addchar": "",
+        "responsetimeout": 10000
+    },
+    {
+        "id": "a0f1b2c3d4e5f601",
+        "type": "mqtt-broker",
+        "name": "Mosquitto Local",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "autoUnsubscribe": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "tab_ui_lf_01",
+        "type": "ui_tab",
+        "name": "LineFollower",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "grp_ui_mon_01",
+        "type": "ui_group",
+        "name": "Monitor",
+        "tab": "tab_ui_lf_01",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "grp_ui_sens_01",
+        "type": "ui_group",
+        "name": "Sensores",
+        "tab": "tab_ui_lf_01",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "grp_ui_alarm_01",
+        "type": "ui_group",
+        "name": "Alarmas",
+        "tab": "tab_ui_lf_01",
+        "order": 4,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "grp_ui_ctrl_01",
+        "type": "ui_group",
+        "name": "Control",
+        "tab": "tab_ui_lf_01",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "mqtt_in_fast",
+        "type": "mqtt in",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Telemetry FAST",
+        "topic": "robot/linefollower/telemetry/fast",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a0f1b2c3d4e5f601",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 140,
+        "wires": [
+            [
+                "json_fast"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_slow",
+        "type": "mqtt in",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Telemetry SLOW",
+        "topic": "robot/linefollower/telemetry/slow",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a0f1b2c3d4e5f601",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 200,
+        "y": 200,
+        "wires": [
+            [
+                "json_slow"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_status",
+        "type": "mqtt in",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Status",
+        "topic": "robot/linefollower/status",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a0f1b2c3d4e5f601",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 220,
+        "y": 260,
+        "wires": [
+            [
+                "json_status"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_ack",
+        "type": "mqtt in",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Ack",
+        "topic": "robot/linefollower/ack",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a0f1b2c3d4e5f601",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 320,
+        "wires": [
+            [
+                "json_ack"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_in_event",
+        "type": "mqtt in",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Event",
+        "topic": "robot/linefollower/event",
+        "qos": "0",
+        "datatype": "auto-detect",
+        "broker": "a0f1b2c3d4e5f601",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 210,
+        "y": 380,
+        "wires": [
+            [
+                "json_event"
+            ]
+        ]
+    },
+    {
+        "id": "json_fast",
+        "type": "json",
+        "z": "b1936d8f3e5a4c01",
+        "name": "FAST JSON",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "fast_ui_sampler",
+                "dataset_row_build"
+            ]
+        ]
+    },
+    {
+        "id": "json_slow",
+        "type": "json",
+        "z": "b1936d8f3e5a4c01",
+        "name": "SLOW JSON",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 450,
+        "y": 200,
+        "wires": [
+            [
+                "cal_state_text",
+                "alarm_text_build",
+                "sensor_extract",
+                "sync_ctrl_from_slow",
+                "context_summary_build",
+                "debug_slow",
+                "ai_summary_build",
+                "profile_run_build",
+                "dataset_row_build",
+                "dom_sensor_text",
+                "trend_avg_ch",
+                "curve_int_ch"
+            ]
+        ]
+    },
+    {
+        "id": "json_status",
+        "type": "json",
+        "z": "b1936d8f3e5a4c01",
+        "name": "STATUS JSON",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 450,
+        "y": 260,
+        "wires": [
+            [
+                "status_text",
+                "status_reason_text",
+                "debug_status"
+            ]
+        ]
+    },
+    {
+        "id": "json_ack",
+        "type": "json",
+        "z": "b1936d8f3e5a4c01",
+        "name": "ACK JSON",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 440,
+        "y": 320,
+        "wires": [
+            [
+                "ack_text",
+                "debug_ack"
+            ]
+        ]
+    },
+    {
+        "id": "json_event",
+        "type": "json",
+        "z": "b1936d8f3e5a4c01",
+        "name": "EVENT JSON",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 450,
+        "y": 380,
+        "wires": [
+            [
+                "event_text",
+                "event_to_toast",
+                "debug_event"
+            ]
+        ]
+    },
+    {
+        "id": "state_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_mon_01",
+        "order": 1,
+        "width": 3,
+        "height": 1,
+        "name": "Estado",
+        "label": "Estado",
+        "format": "{{msg.payload.state}}",
+        "layout": "row-spread",
+        "x": 1180,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "line_lost_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_mon_01",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "name": "Line lost",
+        "label": "Line lost",
+        "format": "{{msg.payload.line_lost}}",
+        "layout": "row-spread",
+        "x": 1180,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "lost_ms_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_mon_01",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "name": "Lost ms",
+        "label": "Lost ms",
+        "format": "{{msg.payload.lost_ms}}",
+        "layout": "row-spread",
+        "x": 1180,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "dir_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_mon_01",
+        "order": 4,
+        "width": 3,
+        "height": 1,
+        "name": "Last dir",
+        "label": "Last dir",
+        "format": "{{msg.payload.last_dir}}",
+        "layout": "row-spread",
+        "x": 1180,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "dom_sensor_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_mon_01",
+        "order": 5,
+        "width": 12,
+        "height": 1,
+        "name": "Dominant sensor",
+        "label": "Dominant sensor",
+        "format": "{{msg.payload.dominant_sensor}}",
+        "layout": "row-spread",
+        "x": 1210,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "rssi_fast_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_mon_01",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "name": "RSSI",
+        "label": "WiFi RSSI",
+        "format": "{{msg.payload.network.wifi_rssi}} dBm",
+        "layout": "row-spread",
+        "x": 1200,
+        "y": 230,
+        "wires": []
+    },
+    {
+        "id": "loop_hz_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_mon_01",
+        "order": 7,
+        "width": 3,
+        "height": 1,
+        "name": "Loop Hz",
+        "label": "Loop Hz",
+        "format": "{{msg.payload.perf.loop_hz}}",
+        "layout": "row-spread",
+        "x": 1200,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "line_pos_g",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Line Pos Gauge",
+        "group": "grp_ui_mon_01",
+        "order": 8,
+        "width": 6,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Line Position",
+        "label": "-1500..1500",
+        "format": "{{value}}",
+        "min": "-1500",
+        "max": "1500",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "-500",
+        "seg2": "500",
+        "x": 1500,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "line_pos_ch",
+        "type": "change",
+        "z": "b1936d8f3e5a4c01",
+        "name": "line_pos->payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.line_pos",
+                "tot": "msg"
+            }
+        ],
+        "x": 1190,
+        "y": 340,
+        "wires": [
+            [
+                "line_pos_chart"
+            ]
+        ]
+    },
+    {
+        "id": "line_pos_chart",
+        "type": "ui_chart",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Line Pos Chart",
+        "group": "grp_ui_mon_01",
+        "order": 9,
+        "width": 6,
+        "height": 3,
+        "label": "Line Pos",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Sin datos",
+        "dot": false,
+        "ymin": "-1600",
+        "ymax": "1600",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e"
+        ],
+        "outputs": 1,
+        "x": 1420,
+        "y": 340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "pid_err_ch",
+        "type": "change",
+        "z": "b1936d8f3e5a4c01",
+        "name": "pid.error",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.pid.error",
+                "tot": "msg"
+            }
+        ],
+        "x": 1180,
+        "y": 380,
+        "wires": [
+            [
+                "pid_err_chart"
+            ]
+        ]
+    },
+    {
+        "id": "pid_err_chart",
+        "type": "ui_chart",
+        "z": "b1936d8f3e5a4c01",
+        "name": "PID Error Chart",
+        "group": "grp_ui_mon_01",
+        "order": 10,
+        "width": 6,
+        "height": 3,
+        "label": "PID Error",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Sin datos",
+        "dot": false,
+        "ymin": "-1.2",
+        "ymax": "1.2",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "colors": [
+            "#ff7f0e",
+            "#aec7e8",
+            "#ffbb78"
+        ],
+        "outputs": 1,
+        "x": 1410,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "pid_corr_ch",
+        "type": "change",
+        "z": "b1936d8f3e5a4c01",
+        "name": "pid.correction",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.pid.correction",
+                "tot": "msg"
+            }
+        ],
+        "x": 1190,
+        "y": 420,
+        "wires": [
+            [
+                "pid_corr_chart"
+            ]
+        ]
+    },
+    {
+        "id": "pid_corr_chart",
+        "type": "ui_chart",
+        "z": "b1936d8f3e5a4c01",
+        "name": "PID Correction Chart",
+        "group": "grp_ui_mon_01",
+        "order": 11,
+        "width": 6,
+        "height": 3,
+        "label": "PID Correction",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Sin datos",
+        "dot": false,
+        "ymin": "-1.5",
+        "ymax": "1.5",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "colors": [
+            "#2ca02c",
+            "#98df8a",
+            "#ffbb78"
+        ],
+        "outputs": 1,
+        "x": 1430,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "motor_a_g",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Motor A",
+        "group": "grp_ui_mon_01",
+        "order": 12,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Motor A PWM",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-255",
+        "max": "255",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "-80",
+        "seg2": "80",
+        "x": 1210,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "motor_b_g",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Motor B",
+        "group": "grp_ui_mon_01",
+        "order": 13,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Motor B PWM",
+        "label": "",
+        "format": "{{value}}",
+        "min": "-255",
+        "max": "255",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "-80",
+        "seg2": "80",
+        "x": 1210,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "sensor_extract",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Extraer sensores fast/slow",
+        "func": "const p = msg.payload || {};\nconst role = String(p.topic_role || '');\nif (role === 'telemetry/slow') {\n  flow.set('lf_last_slow_sensor_payload', p);\n}\nconst slowPayload = flow.get('lf_last_slow_sensor_payload') || {};\nconst slowSensors = Array.isArray(slowPayload.sensors) ? slowPayload.sensors : [];\nlet rawOut = [null, null, null, null];\nlet normOut = [null, null, null, null];\nlet calOut = null;\n\nif (role === 'telemetry/fast') {\n  const fastSensors = p.sensors || {};\n  const fastNorm = Array.isArray(fastSensors.norm) ? fastSensors.norm : [];\n  for (let i = 0; i < 4; i++) {\n    normOut[i] = { payload: Number(fastNorm[i] ?? 0), topic: 'norm' + i };\n  }\n  if (slowSensors.length) {\n    for (let i = 0; i < 4; i++) {\n      rawOut[i] = { payload: Number(slowSensors[i]?.raw ?? 0), topic: 'raw' + i };\n    }\n    calOut = { payload: slowPayload };\n  }\n} else {\n  for (let i = 0; i < 4; i++) {\n    const s = slowSensors[i] || {};\n    rawOut[i] = { payload: Number(s.raw ?? 0), topic: 'raw' + i };\n    normOut[i] = { payload: Number(s.norm ?? 0), topic: 'norm' + i };\n  }\n  calOut = { payload: p };\n}\n\nreturn [rawOut[0], rawOut[1], rawOut[2], rawOut[3], normOut[0], normOut[1], normOut[2], normOut[3], calOut];",
+        "outputs": 9,
+        "noerr": 0,
+        "x": 1200,
+        "y": 580,
+        "wires": [
+            [
+                "g_raw0"
+            ],
+            [
+                "g_raw1"
+            ],
+            [
+                "g_raw2"
+            ],
+            [
+                "g_raw3"
+            ],
+            [
+                "g_norm0"
+            ],
+            [
+                "g_norm1"
+            ],
+            [
+                "g_norm2"
+            ],
+            [
+                "g_norm3"
+            ],
+            [
+                "cal_span_text"
+            ]
+        ]
+    },
+    {
+        "id": "g_raw0",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Raw L-Outer",
+        "group": "grp_ui_sens_01",
+        "order": 1,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Raw L-Outer",
+        "label": "",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "4095",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "1200",
+        "seg2": "2800",
+        "x": 1480,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "g_raw1",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Raw L-Inner",
+        "group": "grp_ui_sens_01",
+        "order": 2,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Raw L-Inner",
+        "label": "",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "4095",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "1200",
+        "seg2": "2800",
+        "x": 1480,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "g_raw2",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Raw R-Inner",
+        "group": "grp_ui_sens_01",
+        "order": 3,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Raw R-Inner",
+        "label": "",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "4095",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "1200",
+        "seg2": "2800",
+        "x": 1480,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "g_raw3",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Raw R-Outer",
+        "group": "grp_ui_sens_01",
+        "order": 4,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Raw R-Outer",
+        "label": "",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "4095",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "1200",
+        "seg2": "2800",
+        "x": 1480,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "g_norm0",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Norm L-Outer",
+        "group": "grp_ui_sens_01",
+        "order": 5,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Norm L-Outer",
+        "label": "",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "1000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "250",
+        "seg2": "700",
+        "x": 1490,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "g_norm1",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Norm L-Inner",
+        "group": "grp_ui_sens_01",
+        "order": 6,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Norm L-Inner",
+        "label": "",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "1000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "250",
+        "seg2": "700",
+        "x": 1490,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "g_norm2",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Norm R-Inner",
+        "group": "grp_ui_sens_01",
+        "order": 7,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Norm R-Inner",
+        "label": "",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "1000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "250",
+        "seg2": "700",
+        "x": 1490,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "g_norm3",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Norm R-Outer",
+        "group": "grp_ui_sens_01",
+        "order": 8,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Norm R-Outer",
+        "label": "",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "1000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "250",
+        "seg2": "700",
+        "x": 1490,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "cal_state_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_sens_01",
+        "order": 9,
+        "width": 6,
+        "height": 1,
+        "name": "Calibracion",
+        "label": "CalibraciÃƒÂ³n",
+        "format": "cal={{msg.payload.calibration.calibrated}} run={{msg.payload.calibration.calibrating}} visible={{msg.payload.calibration.line_visible}} legs={{msg.payload.calibration.zigzag_legs_done}}/{{msg.payload.calibration.zigzag_legs_target}} pwm={{msg.payload.calibration.applied_pwm}}/{{msg.payload.calibration.sweep_pwm}} edge={{msg.payload.calibration.edge_target_pos}} align={{msg.payload.calibration.align_kp}}/{{msg.payload.calibration.align_ki}}/{{msg.payload.calibration.align_kd}}",
+        "layout": "row-spread",
+        "x": 1290,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "cal_span_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_sens_01",
+        "order": 10,
+        "width": 12,
+        "height": 1,
+        "name": "Sensor spans",
+        "label": "Sensor spans",
+        "format": "{{msg.payload.sensors[0].cal_span}}, {{msg.payload.sensors[1].cal_span}}, {{msg.payload.sensors[2].cal_span}}, {{msg.payload.sensors[3].cal_span}}",
+        "layout": "row-spread",
+        "x": 1480,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "status_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_alarm_01",
+        "order": 1,
+        "width": 4,
+        "height": 1,
+        "name": "MQTT status",
+        "label": "MQTT/Online",
+        "format": "{{msg.payload.online}}",
+        "layout": "row-spread",
+        "x": 1270,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "status_reason_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_alarm_01",
+        "order": 2,
+        "width": 8,
+        "height": 1,
+        "name": "Status reason",
+        "label": "Reason",
+        "format": "{{msg.payload.reason}}",
+        "layout": "row-spread",
+        "x": 1290,
+        "y": 950,
+        "wires": []
+    },
+    {
+        "id": "ack_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_alarm_01",
+        "order": 3,
+        "width": 12,
+        "height": 1,
+        "name": "Ack text",
+        "label": "ACK",
+        "format": "{{msg.payload.cmd}} => {{msg.payload.result}} ({{msg.payload.detail}})",
+        "layout": "row-spread",
+        "x": 1260,
+        "y": 1030,
+        "wires": []
+    },
+    {
+        "id": "event_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_alarm_01",
+        "order": 4,
+        "width": 12,
+        "height": 1,
+        "name": "Event text",
+        "label": "Evento",
+        "format": "[{{msg.payload.severity}}] {{msg.payload.code}} - {{msg.payload.message}}",
+        "layout": "row-spread",
+        "x": 1260,
+        "y": 1060,
+        "wires": []
+    },
+    {
+        "id": "alarm_text_build",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Resumen alarmas",
+        "func": "const a = msg.payload.alarms || {};\nconst badCal = Number(a.bad_cal ?? a.sensor_bad_calibration ?? 0);\nconst saturated = Number(a.saturated ?? a.sensor_saturated ?? 0);\nconst weak = Number(a.weak ?? a.sensor_weak ?? 0);\nconst lineLost = Number(a.line_lost ?? 0);\nmsg.payload = `line_lost=${lineLost}, bad_cal=${badCal}, saturated=${saturated}, weak=${weak}`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1260,
+        "y": 1090,
+        "wires": [
+            [
+                "alarms_text"
+            ]
+        ]
+    },
+    {
+        "id": "alarms_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_alarm_01",
+        "order": 5,
+        "width": 12,
+        "height": 1,
+        "name": "Alarmas",
+        "label": "Alarmas",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1470,
+        "y": 1130,
+        "wires": []
+    },
+    {
+        "id": "event_to_toast",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "toast if warn/error",
+        "func": "const s=(msg.payload.severity||'').toLowerCase();\nif(s==='warn'||s==='error'||s==='critical'){\n  msg.payload = `[${msg.payload.severity}] ${msg.payload.code}: ${msg.payload.message}`;\n  return msg;\n}\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1240,
+        "y": 840,
+        "wires": [
+            [
+                "alarm_toast"
+            ]
+        ]
+    },
+    {
+        "id": "alarm_toast",
+        "type": "ui_toast",
+        "z": "b1936d8f3e5a4c01",
+        "position": "top right",
+        "displayTime": "5",
+        "highlight": "red",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "topic": "",
+        "name": "Alarm Toast",
+        "x": 1510,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "btn_start",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "START",
+        "group": "grp_ui_ctrl_01",
+        "order": 1,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "START",
+        "color": "#ffffff",
+        "bgcolor": "#28a745",
+        "icon": "play_arrow",
+        "payload": "{\"cmd\":\"start\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 820,
+        "y": 880,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "btn_stop",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "STOP",
+        "group": "grp_ui_ctrl_01",
+        "order": 2,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "STOP",
+        "color": "#ffffff",
+        "bgcolor": "#d9534f",
+        "icon": "stop",
+        "payload": "{\"cmd\":\"stop\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 820,
+        "y": 920,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "btn_cal",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "CAL",
+        "group": "grp_ui_ctrl_01",
+        "order": 3,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "CALIBRAR",
+        "color": "#000000",
+        "bgcolor": "#f0ad4e",
+        "icon": "tune",
+        "payload": "{\"cmd\":\"calibrate\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 810,
+        "y": 1010,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "btn_status",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "STATUS",
+        "group": "grp_ui_ctrl_01",
+        "order": 4,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "STATUS",
+        "color": "#ffffff",
+        "bgcolor": "#0275d8",
+        "icon": "info",
+        "payload": "{\"cmd\":\"status\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 810,
+        "y": 1050,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "btn_stop_dump_track",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "STOP + EXPORT",
+        "group": "grp_ui_ctrl_01",
+        "order": 11,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "STOP + EXPORTAR",
+        "color": "#ffffff",
+        "bgcolor": "#6f42c1",
+        "icon": "save_alt",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 850,
+        "y": 1090,
+        "wires": [
+            [
+                "fn_stop_and_dump_track"
+            ]
+        ]
+    },
+    {
+        "id": "btn_dump_track",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "EXPORT TRACK",
+        "group": "grp_ui_ctrl_01",
+        "order": 12,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "EXPORTAR PISTA",
+        "color": "#ffffff",
+        "bgcolor": "#5b8c00",
+        "icon": "cloud_download",
+        "payload": "{\"cmd\":\"dump_track\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 850,
+        "y": 1130,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_speed",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Speed",
+        "label": "Base Speed",
+        "group": "grp_ui_ctrl_01",
+        "order": 5,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 0,
+        "max": "255",
+        "step": 1,
+        "x": 800,
+        "y": 1100,
+        "wires": [
+            [
+                "fn_set_speed"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_speed",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_speed",
+        "func": "msg.payload={cmd:'set_speed',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 990,
+        "y": 1100,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_kp",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Kp",
+        "label": "Kp",
+        "group": "grp_ui_ctrl_01",
+        "order": 6,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": "0",
+        "max": "4",
+        "step": 0.01,
+        "x": 790,
+        "y": 1140,
+        "wires": [
+            [
+                "fn_set_kp"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_kp",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_kp",
+        "func": "msg.payload={cmd:'set_kp',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 980,
+        "y": 1140,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_ki",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Ki",
+        "label": "Ki",
+        "group": "grp_ui_ctrl_01",
+        "order": 7,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": "0",
+        "max": "1",
+        "step": 0.001,
+        "x": 790,
+        "y": 1180,
+        "wires": [
+            [
+                "fn_set_ki"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_ki",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_ki",
+        "func": "msg.payload={cmd:'set_ki',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 980,
+        "y": 1180,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_kd",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Kd",
+        "label": "Kd",
+        "group": "grp_ui_ctrl_01",
+        "order": 8,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": "0",
+        "max": "20",
+        "step": 0.01,
+        "x": 790,
+        "y": 1220,
+        "wires": [
+            [
+                "fn_set_kd"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_kd",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_kd",
+        "func": "msg.payload={cmd:'set_kd',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 980,
+        "y": 1220,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_fast",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Fast ms",
+        "label": "Fast Telemetry ms",
+        "group": "grp_ui_ctrl_01",
+        "order": 9,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 100,
+        "max": "1000",
+        "step": 10,
+        "x": 810,
+        "y": 1260,
+        "wires": [
+            [
+                "fn_set_fast"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_fast",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_fast_ms",
+        "func": "msg.payload={cmd:'set_fast_ms',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1010,
+        "y": 1260,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_slow",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Slow ms",
+        "label": "Slow Telemetry ms",
+        "group": "grp_ui_ctrl_01",
+        "order": 10,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 200,
+        "max": "5000",
+        "step": 50,
+        "x": 810,
+        "y": 1300,
+        "wires": [
+            [
+                "fn_set_slow"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_slow",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_slow_ms",
+        "func": "msg.payload={cmd:'set_slow_ms',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1010,
+        "y": 1300,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_lost_sum",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Lost sum",
+        "label": "Lost SUM TH",
+        "group": "grp_ui_ctrl_01",
+        "order": 13,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 0,
+        "max": "4000",
+        "step": 5,
+        "x": 800,
+        "y": 1420,
+        "wires": [
+            [
+                "fn_lost_sum"
+            ]
+        ]
+    },
+    {
+        "id": "fn_lost_sum",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_lost_sum",
+        "func": "msg.payload={cmd:'set_lost_sum',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1010,
+        "y": 1420,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_lost_mx",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Lost mx",
+        "label": "Lost MAX TH",
+        "group": "grp_ui_ctrl_01",
+        "order": 14,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 0,
+        "max": "1000",
+        "step": 1,
+        "x": 800,
+        "y": 1460,
+        "wires": [
+            [
+                "fn_lost_mx"
+            ]
+        ]
+    },
+    {
+        "id": "fn_lost_mx",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_lost_mx",
+        "func": "msg.payload={cmd:'set_lost_mx',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1010,
+        "y": 1460,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "cmd_to_json",
+        "type": "json",
+        "z": "b1936d8f3e5a4c01",
+        "name": "cmd->json",
+        "property": "payload",
+        "action": "str",
+        "pretty": false,
+        "x": 1210,
+        "y": 1190,
+        "wires": [
+            [
+                "mqtt_out_cmd",
+                "debug_cmd"
+            ]
+        ]
+    },
+    {
+        "id": "fn_stop_and_dump_track",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "stop_then_dump_track",
+        "func": "const delayMs = 2500;\nnode.status({fill:'yellow',shape:'dot',text:'STOP ahora, export en 2.5 s'});\nnode.send({ payload: { cmd: 'stop' } });\nsetTimeout(() => {\n    node.send({ payload: { cmd: 'dump_track' } });\n    node.status({fill:'green',shape:'dot',text:'dump_track enviado'});\n    setTimeout(() => node.status({}), 2000);\n}, delayMs);\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1060,
+        "y": 1090,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt_out_cmd",
+        "type": "mqtt out",
+        "z": "b1936d8f3e5a4c01",
+        "name": "CMD OUT",
+        "topic": "robot/linefollower/cmd",
+        "qos": "0",
+        "retain": "false",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a0f1b2c3d4e5f601",
+        "x": 1410,
+        "y": 1190,
+        "wires": []
+    },
+    {
+        "id": "debug_fast",
+        "type": "debug",
+        "z": "b1936d8f3e5a4c01",
+        "name": "debug fast",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1390,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "debug_slow",
+        "type": "debug",
+        "z": "b1936d8f3e5a4c01",
+        "name": "debug slow",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 930,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "debug_status",
+        "type": "debug",
+        "z": "b1936d8f3e5a4c01",
+        "name": "debug status",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1270,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "debug_ack",
+        "type": "debug",
+        "z": "b1936d8f3e5a4c01",
+        "name": "debug ack",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1270,
+        "y": 950,
+        "wires": []
+    },
+    {
+        "id": "debug_event",
+        "type": "debug",
+        "z": "b1936d8f3e5a4c01",
+        "name": "debug event",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1260,
+        "y": 1030,
+        "wires": []
+    },
+    {
+        "id": "debug_cmd",
+        "type": "debug",
+        "z": "b1936d8f3e5a4c01",
+        "name": "debug cmd",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1420,
+        "y": 1330,
+        "wires": []
+    },
+    {
+        "id": "line_pos_num",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "line_pos -> gauge",
+        "func": "let p = Number(msg.payload?.line_pos);\nif (Number.isFinite(p) && p !== 9999) {\n    context.set('last', p);\n    msg.payload = p;\n    return msg;\n}\nmsg.payload = context.get('last') ?? 0;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1190,
+        "y": 310,
+        "wires": [
+            [
+                "line_pos_g"
+            ]
+        ]
+    },
+    {
+        "id": "motor_a_num",
+        "type": "change",
+        "z": "b1936d8f3e5a4c01",
+        "name": "motor_a -> gauge",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.motors.a_pwm",
+                "tot": "msg"
+            }
+        ],
+        "x": 1200,
+        "y": 460,
+        "wires": [
+            [
+                "motor_a_g"
+            ]
+        ]
+    },
+    {
+        "id": "motor_b_num",
+        "type": "change",
+        "z": "b1936d8f3e5a4c01",
+        "name": "motor_b -> gauge",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.motors.b_pwm",
+                "tot": "msg"
+            }
+        ],
+        "x": 1200,
+        "y": 500,
+        "wires": [
+            [
+                "motor_b_g"
+            ]
+        ]
+    },
+    {
+        "id": "sync_ctrl_from_slow",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Sync controls from slow",
+        "func": "const p = msg.payload || {};\nconst cal = p?.calibration || {};\nconst run = p?.run || {};\nconst out = new Array(18).fill(null);\nout[0] = { payload: Number(p?.motors?.base_cmd ?? 0) };\nout[1] = { payload: Number(p?.pid?.kp ?? 0) };\nout[2] = { payload: Number(p?.pid?.ki ?? 0) };\nout[3] = { payload: Number(p?.pid?.kd ?? 0) };\nout[4] = { payload: Number(p?.perf?.fast_ms ?? 0) };\nout[5] = { payload: Number(p?.perf?.slow_ms ?? 0) };\nout[6] = { payload: Number(p?.sensor_summary?.lost_sum_threshold ?? p?.lost_sum_threshold ?? 0) };\nout[7] = { payload: Number(p?.sensor_summary?.lost_max_threshold ?? p?.lost_max_threshold ?? 0) };\nout[8] = { payload: Number(p?.ai?.enabled ?? 0) };\nout[9] = { payload: Number(p?.ai?.model_enabled ?? 0) };\nout[10] = { payload: Number(p?.ai?.blend ?? 0.65) };\nout[11] = { payload: Number(cal?.sweep_pwm ?? 68) };\nout[12] = { payload: Number(cal?.edge_target_pos ?? 560) };\nout[13] = { payload: Number(cal?.align_kp ?? 0.22) };\nout[14] = { payload: Number(cal?.align_ki ?? 0.0) };\nout[15] = { payload: Number(cal?.align_kd ?? 0.07) };\nout[16] = { payload: Number(run?.autonomous_window_enabled ?? 1) };\nout[17] = { payload: Number(run?.autonomous_target_s ?? Math.round(Number(run?.autonomous_target_ms ?? 9000) / 1000)) };\nreturn out;",
+        "outputs": 18,
+        "noerr": 0,
+        "x": 670,
+        "y": 680,
+        "wires": [
+            [
+                "sl_speed"
+            ],
+            [
+                "sl_kp"
+            ],
+            [
+                "sl_ki"
+            ],
+            [
+                "sl_kd"
+            ],
+            [
+                "sl_fast"
+            ],
+            [
+                "sl_slow"
+            ],
+            [
+                "sl_lost_sum"
+            ],
+            [
+                "sl_lost_mx"
+            ],
+            [
+                "sw_ai_supervisor"
+            ],
+            [
+                "sw_ai_model"
+            ],
+            [
+                "sl_ai_blend"
+            ],
+            [
+                "sl_cal_pwm"
+            ],
+            [
+                "sl_cal_edge"
+            ],
+            [
+                "sl_align_kp"
+            ],
+            [
+                "sl_align_ki"
+            ],
+            [
+                "sl_align_kd"
+            ],
+            [
+                "sw_auto_window"
+            ],
+            [
+                "sl_auto_window_seconds"
+            ]
+        ]
+    },
+    {
+        "id": "49bd36bd36487dff",
+        "type": "debug",
+        "z": "b1936d8f3e5a4c01",
+        "name": "debug 1",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 800,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "local_mode_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_mon_01",
+        "order": 14,
+        "width": 4,
+        "height": 1,
+        "name": "Local mode",
+        "label": "Local mode",
+        "format": "{{msg.payload.local_mode}}",
+        "layout": "row-spread",
+        "x": 1210,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "confidence_num",
+        "type": "change",
+        "z": "b1936d8f3e5a4c01",
+        "name": "confidence -> gauge",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.confidence",
+                "tot": "msg"
+            }
+        ],
+        "x": 1210,
+        "y": 540,
+        "wires": [
+            [
+                "confidence_g"
+            ]
+        ]
+    },
+    {
+        "id": "confidence_g",
+        "type": "ui_gauge",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Confidence Gauge",
+        "group": "grp_ui_mon_01",
+        "order": 15,
+        "width": 3,
+        "height": 3,
+        "gtype": "gage",
+        "title": "Confidence",
+        "label": "0..1",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "1",
+        "colors": [
+            "#ca3838",
+            "#e6e600",
+            "#00b500"
+        ],
+        "seg1": "0.35",
+        "seg2": "0.70",
+        "x": 1450,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "trend_avg_ch",
+        "type": "change",
+        "z": "b1936d8f3e5a4c01",
+        "name": "trend_pos_avg",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.context.trend_pos_avg",
+                "tot": "msg"
+            }
+        ],
+        "x": 1200,
+        "y": 620,
+        "wires": [
+            [
+                "trend_avg_chart"
+            ]
+        ]
+    },
+    {
+        "id": "trend_avg_chart",
+        "type": "ui_chart",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Trend Avg Chart",
+        "group": "grp_ui_mon_01",
+        "order": 16,
+        "width": 6,
+        "height": 3,
+        "label": "Trend Pos Avg",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Sin datos",
+        "dot": false,
+        "ymin": "-0.5",
+        "ymax": "0.5",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "colors": [
+            "#9467bd",
+            "#c5b0d5",
+            "#ffbb78"
+        ],
+        "outputs": 1,
+        "x": 1450,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "curve_int_ch",
+        "type": "change",
+        "z": "b1936d8f3e5a4c01",
+        "name": "curve_intensity",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.context.curve_intensity",
+                "tot": "msg"
+            }
+        ],
+        "x": 1210,
+        "y": 660,
+        "wires": [
+            [
+                "curve_int_chart"
+            ]
+        ]
+    },
+    {
+        "id": "curve_int_chart",
+        "type": "ui_chart",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Curve Intensity Chart",
+        "group": "grp_ui_mon_01",
+        "order": 17,
+        "width": 6,
+        "height": 3,
+        "label": "Curve Intensity",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "Sin datos",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "1",
+        "removeOlder": "5",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "colors": [
+            "#8c564b",
+            "#c49c94",
+            "#ffbb78"
+        ],
+        "outputs": 1,
+        "x": 1460,
+        "y": 660,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "context_summary_build",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Context summary",
+        "func": "const c = msg.payload.context || {};\nconst fmt = (v, n) => Number.isFinite(Number(v)) ? Number(v).toFixed(n) : '0';\nmsg.payload = `mode=${msg.payload.local_mode || 'unknown'}, cand=${msg.payload.local_mode_candidate || 'unknown'}, pos=${fmt(c.pos_norm,2)}, trend=${fmt(c.trend_pos_avg,3)}, curve=${fmt(c.curve_intensity,2)}, conf=${fmt(c.confidence_avg,2)}`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1220,
+        "y": 700,
+        "wires": [
+            [
+                "context_summary_text"
+            ]
+        ]
+    },
+    {
+        "id": "context_summary_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_sens_01",
+        "order": 11,
+        "width": 12,
+        "height": 1,
+        "name": "Context summary",
+        "label": "Contexto local",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1480,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "41ebe2673ab1b7d1",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6",
+            "node-red-node-serialport": "2.0.3"
+        }
+    },
+    {
+        "id": "grp_ui_ai_01",
+        "type": "ui_group",
+        "name": "IA / Dataset",
+        "tab": "tab_ui_lf_01",
+        "order": 5,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "grp_ui_run_01",
+        "type": "ui_group",
+        "name": "Perfil / Run",
+        "tab": "tab_ui_lf_01",
+        "order": 6,
+        "disp": true,
+        "width": "12",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "ai_summary_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_ai_01",
+        "order": 1,
+        "width": 12,
+        "height": 1,
+        "name": "AI summary",
+        "label": "Supervisor IA",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1520,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "dataset_status_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_ai_01",
+        "order": 2,
+        "width": 12,
+        "height": 1,
+        "name": "Dataset status",
+        "label": "Dataset",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1520,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "dataset_label_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_ai_01",
+        "order": 3,
+        "width": 12,
+        "height": 1,
+        "name": "Dataset label",
+        "label": "Etiqueta activa",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1520,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "dataset_session_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_ai_01",
+        "order": 4,
+        "width": 12,
+        "height": 1,
+        "name": "Dataset session",
+        "label": "Sesion activa",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1520,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "dataset_lap_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_ai_01",
+        "order": 5,
+        "width": 12,
+        "height": 1,
+        "name": "Dataset lap count",
+        "label": "Vueltas manuales",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1520,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "inject_status_boot",
+        "type": "inject",
+        "z": "b1936d8f3e5a4c01",
+        "name": "request status on start",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1.2",
+        "topic": "",
+        "payload": "{\"cmd\":\"status\"}",
+        "payloadType": "json",
+        "x": 1010,
+        "y": 830,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "inject_dataset_ui_init",
+        "type": "inject",
+        "z": "b1936d8f3e5a4c01",
+        "name": "dataset ui init",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "x": 1020,
+        "y": 870,
+        "wires": [
+            [
+                "dataset_ui_init"
+            ]
+        ]
+    },
+    {
+        "id": "dataset_ui_init",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "dataset ui init",
+        "func": "const recording = !!flow.get('dataset_recording');\nconst rows = Number(flow.get('dataset_rows') || 0);\nif (typeof flow.get('dataset_label') === 'undefined') {\n  flow.set('dataset_label', 'unknown');\n}\nif (typeof flow.get('dataset_manual_lap_count') === 'undefined') {\n  flow.set('dataset_manual_lap_count', 0);\n}\nconst label = String(flow.get('dataset_label') || 'unknown');\nconst sessionValue = String(flow.get('dataset_session') || '');\nconst session = sessionValue || 'none';\nconst lapCount = Number(flow.get('dataset_manual_lap_count') || 0);\nreturn [\n  { payload: `recording=${recording ? 1 : 0}, rows=${rows}, laps=${lapCount}, label=${label}, session=${session}, workflow=REC->NEW->START->LABEL/LAP->STOP` },\n  { payload: `label=${label}` },\n  { payload: `session=${session}` },\n  { payload: `laps=${lapCount}` }\n];",
+        "outputs": 4,
+        "noerr": 0,
+        "x": 1240,
+        "y": 870,
+        "wires": [
+            [
+                "dataset_status_text"
+            ],
+            [
+                "dataset_label_text"
+            ],
+            [
+                "dataset_session_text"
+            ],
+            [
+                "dataset_lap_text"
+            ]
+        ]
+    },
+    {
+        "id": "btn_label_straight",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Label straight",
+        "group": "grp_ui_ai_01",
+        "order": 5,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "RECTA",
+        "color": "#ffffff",
+        "bgcolor": "#28a745",
+        "icon": "trending_flat",
+        "payload": "{\"label\":\"straight\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1040,
+        "y": 900,
+        "wires": [
+            [
+                "dataset_set_label"
+            ]
+        ]
+    },
+    {
+        "id": "btn_label_curve_soft",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Label curve soft",
+        "group": "grp_ui_ai_01",
+        "order": 6,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "IZQ SUAVE",
+        "color": "#ffffff",
+        "bgcolor": "#5bc0de",
+        "icon": "show_chart",
+        "payload": "{\"label\":\"left_soft\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1050,
+        "y": 940,
+        "wires": [
+            [
+                "dataset_set_label"
+            ]
+        ]
+    },
+    {
+        "id": "btn_label_curve_hard",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Label curve hard",
+        "group": "grp_ui_ai_01",
+        "order": 7,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "IZQ FUERTE",
+        "color": "#ffffff",
+        "bgcolor": "#f0ad4e",
+        "icon": "timeline",
+        "payload": "{\"label\":\"left_hard\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1050,
+        "y": 980,
+        "wires": [
+            [
+                "dataset_set_label"
+            ]
+        ]
+    },
+    {
+        "id": "btn_label_recovery",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Label recovery",
+        "group": "grp_ui_ai_01",
+        "order": 8,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "DER SUAVE",
+        "color": "#ffffff",
+        "bgcolor": "#17a2b8",
+        "icon": "trending_down",
+        "payload": "{\"label\":\"right_soft\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1040,
+        "y": 1020,
+        "wires": [
+            [
+                "dataset_set_label"
+            ]
+        ]
+    },
+    {
+        "id": "btn_label_unknown",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Label unknown",
+        "group": "grp_ui_ai_01",
+        "order": 9,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "DER FUERTE",
+        "color": "#ffffff",
+        "bgcolor": "#6f42c1",
+        "icon": "south_east",
+        "payload": "{\"label\":\"right_hard\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1040,
+        "y": 1060,
+        "wires": [
+            [
+                "dataset_set_label"
+            ]
+        ]
+    },
+    {
+        "id": "btn_new_session",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "New dataset session",
+        "group": "grp_ui_ai_01",
+        "order": 15,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "NUEVA SESION",
+        "color": "#ffffff",
+        "bgcolor": "#0275d8",
+        "icon": "note_add",
+        "payload": "{}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1050,
+        "y": 1180,
+        "wires": [
+            [
+                "dataset_new_session"
+            ]
+        ]
+    },
+    {
+        "id": "btn_dataset_mark_lap",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Mark dataset lap",
+        "group": "grp_ui_ai_01",
+        "order": 16,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "label": "MARCAR VUELTA",
+        "color": "#ffffff",
+        "bgcolor": "#c0392b",
+        "icon": "flag",
+        "payload": "{}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1050,
+        "y": 1220,
+        "wires": [
+            [
+                "dataset_mark_lap"
+            ]
+        ]
+    },
+    {
+        "id": "sw_dataset_record",
+        "type": "ui_switch",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Dataset rec",
+        "label": "Grabar dataset",
+        "group": "grp_ui_ctrl_01",
+        "order": 15,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "animate": false,
+        "x": 790,
+        "y": 1500,
+        "wires": [
+            [
+                "dataset_record_toggle"
+            ]
+        ]
+    },
+    {
+        "id": "dataset_record_toggle",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "dataset record",
+        "func": "const recording = Number(msg.payload) !== 0;\nflow.set('dataset_recording', recording);\nconst label = String(flow.get('dataset_label') || 'unknown');\nlet session = String(flow.get('dataset_session') || '');\nif (recording && !session) {\n  const now = new Date();\n  const pad = (n) => String(n).padStart(2, '0');\n  session = `session_${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;\n  flow.set('dataset_session', session);\n  flow.set('dataset_rows', 0);\n  flow.set('dataset_manual_lap_count', 0);\n  flow.set('dataset_manual_lap_mark_at', 0);\n  flow.set('dataset_manual_lap_pending', 0);\n}\nconst rows = Number(flow.get('dataset_rows') || 0);\nconst lapCount = Number(flow.get('dataset_manual_lap_count') || 0);\nconst status = `recording=${recording ? 1 : 0}, rows=${rows}, laps=${lapCount}, label=${label}, session=${session || 'none'}, workflow=REC->NEW->START->LABEL/LAP->STOP`;\nreturn [\n  { payload: status },\n  { payload: `label=${label}` },\n  { payload: `session=${session || 'none'}` },\n  { payload: `laps=${lapCount}` }\n];",
+        "outputs": 4,
+        "noerr": 0,
+        "x": 1030,
+        "y": 1500,
+        "wires": [
+            [
+                "dataset_status_text"
+            ],
+            [
+                "dataset_label_text"
+            ],
+            [
+                "dataset_session_text"
+            ],
+            [
+                "dataset_lap_text"
+            ]
+        ]
+    },
+    {
+        "id": "dataset_set_label",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "dataset set label",
+        "func": "const raw = (msg.payload && msg.payload.label) ? String(msg.payload.label) : String(msg.payload || 'unknown');\nconst allowed = new Set(['straight', 'straight_long', 'straight_short', 'left_soft', 'left_hard', 'right_soft', 'right_hard', 'recovery', 'unknown']);\nconst label = allowed.has(raw) ? raw : 'unknown';\nflow.set('dataset_label', label);\nflow.set('dataset_label_set_at', Date.now());\nconst recording = !!flow.get('dataset_recording');\nconst rows = Number(flow.get('dataset_rows') || 0);\nconst lapCount = Number(flow.get('dataset_manual_lap_count') || 0);\nconst session = String(flow.get('dataset_session') || 'none');\nreturn [\n  { payload: `label=${label}` },\n  { payload: `recording=${recording ? 1 : 0}, rows=${rows}, laps=${lapCount}, label=${label}, session=${session}, capture=manual_directional` }\n];",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 1290,
+        "y": 980,
+        "wires": [
+            [
+                "dataset_label_text"
+            ],
+            [
+                "dataset_status_text"
+            ]
+        ]
+    },
+    {
+        "id": "dataset_new_session",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "dataset new session",
+        "func": "const now = new Date();\nconst pad = (n) => String(n).padStart(2, '0');\nconst session = `session_${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}_${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;\nflow.set('dataset_session', session);\nflow.set('dataset_rows', 0);\nflow.set('dataset_label', 'unknown');\nflow.set('dataset_label_set_at', 0);\nflow.set('dataset_manual_lap_count', 0);\nflow.set('dataset_manual_lap_mark_at', 0);\nflow.set('dataset_manual_lap_pending', 0);\nreturn [\n  { payload: `session=${session}` },\n  { payload: `recording=${flow.get('dataset_recording') ? 1 : 0}, rows=0, laps=0, label=unknown, session=${session}, capture=manual_directional` },\n  { payload: 'label=unknown' },\n  { payload: 'laps=0' }\n];",
+        "outputs": 4,
+        "noerr": 0,
+        "x": 1300,
+        "y": 1100,
+        "wires": [
+            [
+                "dataset_session_text"
+            ],
+            [
+                "dataset_status_text"
+            ],
+            [
+                "dataset_label_text"
+            ],
+            [
+                "dataset_lap_text"
+            ]
+        ]
+    },
+    {
+        "id": "dataset_mark_lap",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "dataset mark lap",
+        "func": "const now = Date.now();\nconst recording = !!flow.get('dataset_recording');\nconst rows = Number(flow.get('dataset_rows') || 0);\nconst label = String(flow.get('dataset_label') || 'unknown');\nconst session = String(flow.get('dataset_session') || 'none');\nconst lapCount = Number(flow.get('dataset_manual_lap_count') || 0) + 1;\nflow.set('dataset_manual_lap_count', lapCount);\nflow.set('dataset_manual_lap_mark_at', now);\nflow.set('dataset_manual_lap_pending', 1);\nreturn [\n  { payload: `laps=${lapCount}` },\n  { payload: `recording=${recording ? 1 : 0}, rows=${rows}, laps=${lapCount}, label=${label}, session=${session}, lap_marked=1` }\n];",
+        "outputs": 2,
+        "noerr": 0,
+        "x": 1290,
+        "y": 1260,
+        "wires": [
+            [
+                "dataset_lap_text"
+            ],
+            [
+                "dataset_status_text"
+            ]
+        ]
+    },
+    {
+        "id": "ai_summary_build",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "AI summary build",
+        "func": "const p = msg.payload || {};\nconst ai = p.ai || {};\nconst source = ai.source || p.ai_source || 'disabled';\nconst track = ai.track_mode || p.ai_track_mode || 'unknown';\nconst conf = Number(ai.confidence ?? p.confidence ?? 0);\nconst blend = Number(ai.blend ?? 0);\nconst bias = Number(ai.recovery_bias ?? 0);\nconst modelEnabled = Number(ai.model_enabled ?? 0);\nconst hookPresent = Number(ai.hook_present ?? 0);\nmsg.payload = `source=${source}, track=${track}, conf=${conf.toFixed(2)}, blend=${blend.toFixed(2)}, bias=${bias.toFixed(2)}, model=${modelEnabled}, hook=${hookPresent}`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1230,
+        "y": 740,
+        "wires": [
+            [
+                "ai_summary_text"
+            ]
+        ]
+    },
+    {
+        "id": "dataset_row_build",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Dataset row build",
+        "func": "const p = msg.payload || {};\nconst role = String(p.topic_role || '');\nif (role === 'telemetry/slow') {\n  flow.set('lf_slow_payload', p);\n}\nif (role === 'telemetry/fast') {\n  flow.set('lf_fast_payload', p);\n}\n\nconst fast = role === 'telemetry/fast' ? p : (flow.get('lf_fast_payload') || {});\nconst slow = role === 'telemetry/slow' ? p : (flow.get('lf_slow_payload') || {});\nconst recording = !!flow.get('dataset_recording');\nlet rows = Number(flow.get('dataset_rows') || 0);\nconst label = String(flow.get('dataset_label') || 'unknown');\nconst labelSetAtMs = Number(flow.get('dataset_label_set_at') || 0);\nconst labelAgeMs = labelSetAtMs > 0 ? Math.max(0, Date.now() - labelSetAtMs) : 0;\nconst session = String(flow.get('dataset_session') || '');\nconst hasSlow = Object.keys(slow).length > 0;\nconst datasetPath = 'C:\\\\Users\\\\bryan\\\\OneDrive\\\\Documentos\\\\PlatformIO\\\\Projects\\\\Seguidor IA\\\\telemetria\\\\dataset\\\\linefollower_ai_dataset.jsonl';\nconst manualLapCount = Number(flow.get('dataset_manual_lap_count') || 0);\nconst manualLapMarkAtMs = Number(flow.get('dataset_manual_lap_mark_at') || 0);\nconst manualLapMarkAgeMs = manualLapMarkAtMs > 0 ? Math.max(0, Date.now() - manualLapMarkAtMs) : 0;\nlet manualLapPending = Number(flow.get('dataset_manual_lap_pending') || 0) !== 0;\n\nconst ai = slow.ai || fast.ai || {};\nconst ctx = fast.context || slow.context || {};\nconst pidFast = fast.pid || {};\nconst pidSlow = slow.pid || {};\nconst motorsFast = fast.motors || {};\nconst motorsSlow = slow.motors || {};\nconst sensorsFast = fast.sensors || {};\nconst crossing = slow.crossing || {};\nconst run = slow.run || {};\nconst profile = slow.profile || {};\nconst norm = Array.isArray(sensorsFast.norm) ? sensorsFast.norm : [];\nconst slowSensors = Array.isArray(slow.sensors) ? slow.sensors : [];\nconst rawAt = (i) => Number(slowSensors[i]?.raw ?? 0);\nconst fmt = (v, n) => Number.isFinite(Number(v)) ? Number(v).toFixed(n) : '0';\n\nlet fileMsg = null;\nlet debugMsg = null;\nif (role === 'telemetry/fast' && Object.keys(fast).length > 0) {\n  const nextRowIndex = rows + 1;\n  const row = {\n    timestamp_unix_ms: Number(fast.timestamp_unix_ms ?? slow.timestamp_unix_ms ?? 0),\n    timestamp_valid: Number(fast.timestamp_valid ?? slow.timestamp_valid ?? 0),\n    uptime_ms: Number(fast.uptime_ms ?? slow.uptime_ms ?? 0),\n    seq_fast: Number(fast.seq ?? 0),\n    seq_slow: Number(slow.seq ?? 0),\n    state: String(fast.state ?? slow.state ?? ''),\n    drive_profile: String(fast.profile ?? profile.name ?? 'normal'),\n    local_mode: String(fast.local_mode ?? slow.local_mode ?? ''),\n    local_mode_candidate: String(fast.local_mode_candidate ?? slow.local_mode_candidate ?? ''),\n    ai_source: String(ai.source ?? fast.ai_source ?? 'disabled'),\n    ai_track_mode: String(ai.track_mode ?? fast.ai_track_mode ?? ''),\n    ai_confidence: Number(ai.confidence ?? fast.ai_confidence ?? 0),\n    ai_blend: Number(ai.blend ?? fast.ai_blend ?? 0),\n    ai_speed_factor: Number(ai.speed_factor ?? fast.ai_speed_factor ?? 0),\n    ai_kp_scale: Number(ai.kp_scale ?? fast.ai_kp_scale ?? 0),\n    ai_ki_scale: Number(ai.ki_scale ?? fast.ai_ki_scale ?? 0),\n    ai_kd_scale: Number(ai.kd_scale ?? fast.ai_kd_scale ?? 0),\n    ai_pivot_threshold: Number(ai.pivot_threshold ?? fast.ai_pivot_threshold ?? 0),\n    ai_pivot_cap: Number(ai.pivot_cap ?? fast.ai_pivot_cap ?? 0),\n    ai_recovery_bias: Number(ai.recovery_bias ?? fast.ai_recovery_bias ?? 0),\n    intersection_active: Number(fast.intersection_active ?? crossing.active ?? 0),\n    intersection_score: Number(fast.intersection_score ?? crossing.score ?? 0),\n    run_elapsed_ms: Number(fast.run_elapsed_ms ?? run.elapsed_ms ?? 0),\n    run_lap_estimate: Number(fast.lap_estimate ?? run.lap_estimate ?? 0),\n    run_intersection_count: Number(fast.run_intersection_count ?? run.intersection_count ?? 0),\n    dataset_label: label,\n    dataset_label_valid: label !== 'unknown' ? 1 : 0,\n    dataset_label_set_at_ms: labelSetAtMs,\n    dataset_label_age_ms: labelAgeMs,\n    dataset_session: session,\n    dataset_row_index: nextRowIndex,\n    dataset_manual_lap_count: manualLapCount,\n    dataset_manual_lap_marked: manualLapPending ? 1 : 0,\n    dataset_manual_lap_mark_at_ms: manualLapMarkAtMs,\n    dataset_manual_lap_mark_age_ms: manualLapMarkAgeMs,\n    line_pos: Number(fast.line_pos ?? slow.line_pos ?? 0),\n    line_lost: Number(fast.line_lost ?? slow.line_lost ?? 0),\n    lost_ms: Number(fast.lost_ms ?? slow.lost_ms ?? 0),\n    last_dir: String(fast.last_dir ?? slow.last_dir ?? ''),\n    balance_lr: Number(fast.balance_lr ?? slow.balance_lr ?? 0),\n    confidence_fast: Number(fast.confidence ?? 0),\n    confidence_avg: Number(fast.confidence_avg ?? ctx.confidence_avg ?? slow.confidence ?? fast.confidence ?? 0),\n    sensor_sum: Number(sensorsFast.sum ?? 0),\n    sensor_max: Number(sensorsFast.max ?? 0),\n    norm0: Number(norm[0] ?? 0),\n    norm1: Number(norm[1] ?? 0),\n    norm2: Number(norm[2] ?? 0),\n    norm3: Number(norm[3] ?? 0),\n    raw0: rawAt(0),\n    raw1: rawAt(1),\n    raw2: rawAt(2),\n    raw3: rawAt(3),\n    pos_norm: Number(fast.pos_norm ?? ctx.pos_norm ?? 0),\n    trend_pos: Number(fast.trend_pos ?? ctx.trend_pos ?? 0),\n    trend_pos_avg: Number(fast.trend_pos_avg ?? ctx.trend_pos_avg ?? 0),\n    curve_intensity: Number(fast.curve_intensity ?? ctx.curve_intensity ?? 0),\n    pid_error: Number(pidFast.error ?? pidSlow.error ?? 0),\n    pid_integral: Number(pidFast.integral ?? pidSlow.integral ?? 0),\n    pid_d_filt: Number(pidFast.d_filt ?? pidSlow.d_filt ?? 0),\n    pid_correction: Number(pidFast.correction ?? pidSlow.correction ?? 0),\n    motor_a_pwm: Number(motorsFast.a_pwm ?? motorsSlow.a_pwm ?? 0),\n    motor_b_pwm: Number(motorsFast.b_pwm ?? motorsSlow.b_pwm ?? 0),\n    base_eff: Number(motorsFast.base_eff ?? motorsSlow.adaptive_base_cmd ?? 0),\n    dominant_sensor: String(fast.dominant_sensor ?? slow.dominant_sensor ?? '')\n  };\n\n  if (recording) {\n    rows = nextRowIndex;\n    flow.set('dataset_rows', rows);\n    fileMsg = { payload: JSON.stringify(row), filename: datasetPath };\n    debugMsg = { payload: row };\n    if (manualLapPending) {\n      flow.set('dataset_manual_lap_pending', 0);\n      manualLapPending = false;\n    }\n  }\n}\n\nconst source = String(ai.source ?? fast.ai_source ?? 'disabled');\nconst mode = String(ai.track_mode ?? fast.ai_track_mode ?? fast.local_mode ?? slow.local_mode ?? 'unknown');\nconst conf = Number(ai.confidence ?? fast.confidence ?? 0);\nconst summary = 'recording=' + (recording ? 1 : 0) + ', rows=' + rows + ', laps=' + manualLapCount + ', label=' + label + ', label_age_ms=' + labelAgeMs + ', session=' + (session || 'none') + ', slow=' + (hasSlow ? 1 : 0) + ', src=' + source + ', mode=' + mode + ', conf=' + fmt(conf, 2) + ', capture=manual_directional';\nreturn [fileMsg, { payload: summary }, debugMsg];",
+        "outputs": 3,
+        "noerr": 0,
+        "x": 1240,
+        "y": 780,
+        "wires": [
+            [
+                "dataset_file_append"
+            ],
+            [
+                "dataset_status_text"
+            ],
+            [
+                "debug_dataset"
+            ]
+        ]
+    },
+    {
+        "id": "dataset_file_append",
+        "type": "file",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Append dataset JSONL",
+        "filename": "filename",
+        "filenameType": "msg",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "utf8",
+        "x": 1520,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "debug_dataset",
+        "type": "debug",
+        "z": "b1936d8f3e5a4c01",
+        "name": "debug dataset",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 1510,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "fast_ui_sampler",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "FAST UI sampler",
+        "func": "const minMs = 200;\nconst now = Date.now();\nconst last = Number(context.get('last_ui_ms') || 0);\nif ((now - last) < minMs) return null;\ncontext.set('last_ui_ms', now);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 760,
+        "y": 140,
+        "wires": [
+            [
+                "state_text",
+                "line_pos_ch",
+                "line_pos_num",
+                "line_lost_text",
+                "lost_ms_text",
+                "dir_text",
+                "pid_err_ch",
+                "pid_corr_ch",
+                "motor_a_num",
+                "motor_b_num",
+                "rssi_fast_text",
+                "loop_hz_text",
+                "local_mode_text",
+                "confidence_num",
+                "ai_summary_build",
+                "sensor_extract"
+            ]
+        ]
+    },
+    {
+        "id": "sw_ai_supervisor",
+        "type": "ui_switch",
+        "z": "b1936d8f3e5a4c01",
+        "name": "AI Supervisor",
+        "label": "Activar IA",
+        "group": "grp_ui_ctrl_01",
+        "order": 16,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "animate": false,
+        "x": 800,
+        "y": 1540,
+        "wires": [
+            [
+                "fn_set_ai_supervisor"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_ai_supervisor",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_ai",
+        "func": "msg.payload={cmd:'set_ai',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1010,
+        "y": 1540,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sw_ai_model",
+        "type": "ui_switch",
+        "z": "b1936d8f3e5a4c01",
+        "name": "AI Model",
+        "label": "Usar modelo",
+        "group": "grp_ui_ctrl_01",
+        "order": 17,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "animate": false,
+        "x": 800,
+        "y": 1580,
+        "wires": [
+            [
+                "fn_set_ai_model"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_ai_model",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_ai_model",
+        "func": "msg.payload={cmd:'set_ai_model',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1020,
+        "y": 1580,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_ai_blend",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "AI Blend",
+        "label": "Mezcla IA",
+        "group": "grp_ui_ctrl_01",
+        "order": 18,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 0,
+        "max": "1",
+        "step": 0.01,
+        "x": 800,
+        "y": 1620,
+        "wires": [
+            [
+                "fn_set_ai_blend"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_ai_blend",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_ai_blend",
+        "func": "msg.payload={cmd:'set_ai_blend',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1020,
+        "y": 1620,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_cal_pwm",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Cal PWM",
+        "label": "Cal PWM",
+        "group": "grp_ui_ctrl_01",
+        "order": 21,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 50,
+        "max": "110",
+        "step": 1,
+        "x": 800,
+        "y": 1660,
+        "wires": [
+            [
+                "fn_set_cal_pwm"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_cal_pwm",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_cal_pwm",
+        "func": "msg.payload={cmd:'set_cal_pwm',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1020,
+        "y": 1660,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_cal_edge",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Cal Edge",
+        "label": "Cal Edge",
+        "group": "grp_ui_ctrl_01",
+        "order": 22,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 380,
+        "max": "900",
+        "step": 10,
+        "x": 800,
+        "y": 1700,
+        "wires": [
+            [
+                "fn_set_cal_edge"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_cal_edge",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_cal_edge",
+        "func": "msg.payload={cmd:'set_cal_edge',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1020,
+        "y": 1700,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_align_kp",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Align Kp",
+        "label": "Align Kp",
+        "group": "grp_ui_ctrl_01",
+        "order": 23,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 0,
+        "max": "2",
+        "step": 0.01,
+        "x": 800,
+        "y": 1740,
+        "wires": [
+            [
+                "fn_set_align_kp"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_align_kp",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_align_kp",
+        "func": "msg.payload={cmd:'set_align_kp',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1030,
+        "y": 1740,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_align_ki",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Align Ki",
+        "label": "Align Ki",
+        "group": "grp_ui_ctrl_01",
+        "order": 24,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 0,
+        "max": "1",
+        "step": 0.001,
+        "x": 800,
+        "y": 1780,
+        "wires": [
+            [
+                "fn_set_align_ki"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_align_ki",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_align_ki",
+        "func": "msg.payload={cmd:'set_align_ki',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1030,
+        "y": 1780,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_align_kd",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Align Kd",
+        "label": "Align Kd",
+        "group": "grp_ui_ctrl_01",
+        "order": 25,
+        "width": 9,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 0,
+        "max": "1",
+        "step": 0.01,
+        "x": 800,
+        "y": 1820,
+        "wires": [
+            [
+                "fn_set_align_kd"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_align_kd",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_align_kd",
+        "func": "msg.payload={cmd:'set_align_kd',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1030,
+        "y": 1820,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sw_auto_window",
+        "type": "ui_switch",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Auto Window",
+        "label": "Ventana autonoma",
+        "group": "grp_ui_run_01",
+        "order": 7,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "decouple": "false",
+        "topic": "",
+        "style": "",
+        "onvalue": "1",
+        "onvalueType": "num",
+        "offvalue": "0",
+        "offvalueType": "num",
+        "animate": false,
+        "x": 1250,
+        "y": 900,
+        "wires": [
+            [
+                "fn_set_auto_window"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_auto_window",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_auto_window",
+        "func": "msg.payload={cmd:'set_auto_window',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1450,
+        "y": 900,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "sl_auto_window_seconds",
+        "type": "ui_numeric",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Auto Window Seconds",
+        "label": "Segundos auto",
+        "group": "grp_ui_run_01",
+        "order": 8,
+        "width": 6,
+        "height": 1,
+        "passthru": false,
+        "format": "{{value}}",
+        "wrap": false,
+        "min": 1,
+        "max": "30",
+        "step": 1,
+        "x": 1260,
+        "y": 940,
+        "wires": [
+            [
+                "fn_set_auto_window_seconds"
+            ]
+        ]
+    },
+    {
+        "id": "fn_set_auto_window_seconds",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "set_auto_window_seconds",
+        "func": "msg.payload={cmd:'set_auto_window_seconds',value:Number(msg.payload)};return msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 1470,
+        "y": 940,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "profile_run_build",
+        "type": "function",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Profile / Run build",
+        "func": "const p = msg.payload || {};\nconst profile = p.profile || {};\nconst crossing = p.crossing || {};\nconst run = p.run || {};\nconst track = p.track || {};\nconst fmtNum = (v, d = 2) => Number.isFinite(Number(v)) ? Number(v).toFixed(d) : '0';\nconst fmtMs = (value) => {\n  const ms = Number(value || 0);\n  if (!ms) return 'n/a';\n  const totalSec = Math.floor(ms / 1000);\n  const minutes = Math.floor(totalSec / 60);\n  const seconds = totalSec % 60;\n  const millis = ms % 1000;\n  return `${minutes}:${String(seconds).padStart(2, '0')}.${String(millis).padStart(3, '0')}`;\n};\nconst autoEnabled = Number(run.autonomous_window_enabled ?? 1);\nconst autoTargetMs = Number(run.autonomous_target_ms ?? 9000);\nconst profileText = `perfil=${String(profile.name || 'normal')}, speed=${Number(profile.base_speed ?? p?.motors?.base_cmd ?? 0)}, blend=${fmtNum(profile.ai_blend ?? p?.ai?.blend ?? 0.65)}`;\nconst crossingText = `active=${Number(crossing.active ?? 0)}, score=${fmtNum(crossing.score ?? 0)}, dir=${String(crossing.preferred_dir || 'none')}, cruces=${Number(crossing.count ?? 0)}, marker=${Number(crossing.marker_detected ?? 0)}`;\nconst runText = `active=${Number(run.active ?? 0)}, elapsed=${fmtMs(run.elapsed_ms)}, auto_window=${autoEnabled}, target=${fmtMs(autoTargetMs)}, auto_run=${Number(run.autonomous_mode ?? 0)}, auto_elapsed=${fmtMs(run.autonomous_elapsed_ms)}, samples=${Number(run.buffered_samples ?? 0)}, lost=${Number(run.line_lost_count ?? 0)}, cruces=${Number(run.intersection_count ?? 0)}, laps=${Number(run.lap_estimate ?? 0)}, best=${fmtMs(run.best_lap_ms)}`;\nconst trackText = `ready=${Number(track.ready ?? 0)}, publishing=${Number(track.publishing ?? 0)}, samples=${Number(track.samples ?? 0)}/${Number(track.capacity ?? 0)}, run_id=${Number(track.run_id ?? 0)} | flujo: START -> pista -> STOP -> EXPORTAR`;\nreturn [{ payload: profileText }, { payload: crossingText }, { payload: runText }, { payload: trackText }];",
+        "outputs": 4,
+        "noerr": 0,
+        "x": 1250,
+        "y": 700,
+        "wires": [
+            [
+                "profile_active_text"
+            ],
+            [
+                "crossing_status_text"
+            ],
+            [
+                "run_status_text"
+            ],
+            [
+                "track_status_text"
+            ]
+        ]
+    },
+    {
+        "id": "profile_active_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_run_01",
+        "order": 1,
+        "width": 12,
+        "height": 1,
+        "name": "Perfil activo",
+        "label": "Perfil",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1530,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "crossing_status_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_run_01",
+        "order": 2,
+        "width": 12,
+        "height": 1,
+        "name": "Cruce",
+        "label": "Cruce",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1520,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "run_status_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_run_01",
+        "order": 3,
+        "width": 12,
+        "height": 1,
+        "name": "Corrida",
+        "label": "Corrida",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1520,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "track_status_text",
+        "type": "ui_text",
+        "z": "b1936d8f3e5a4c01",
+        "group": "grp_ui_run_01",
+        "order": 9,
+        "width": 12,
+        "height": 1,
+        "name": "Track export",
+        "label": "Track",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 1530,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "btn_profile_safe",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Perfil seguro",
+        "group": "grp_ui_run_01",
+        "order": 4,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "SEGURO",
+        "color": "#ffffff",
+        "bgcolor": "#28a745",
+        "icon": "shield",
+        "payload": "{\"cmd\":\"set_profile\",\"value\":\"safe\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1250,
+        "y": 780,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "btn_profile_normal",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Perfil normal",
+        "group": "grp_ui_run_01",
+        "order": 5,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "NORMAL",
+        "color": "#ffffff",
+        "bgcolor": "#0275d8",
+        "icon": "tune",
+        "payload": "{\"cmd\":\"set_profile\",\"value\":\"normal\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1250,
+        "y": 820,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "btn_profile_fast",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Perfil rapido",
+        "group": "grp_ui_run_01",
+        "order": 6,
+        "width": 4,
+        "height": 1,
+        "passthru": false,
+        "label": "RAPIDO",
+        "color": "#ffffff",
+        "bgcolor": "#f0ad4e",
+        "icon": "flash_on",
+        "payload": "{\"cmd\":\"set_profile\",\"value\":\"fast\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1240,
+        "y": 860,
+        "wires": [
+            [
+                "cmd_to_json"
+            ]
+        ]
+    },
+    {
+        "id": "btn_label_recovery_manual",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Label recovery manual",
+        "group": "grp_ui_ai_01",
+        "order": 10,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "RECUP",
+        "color": "#ffffff",
+        "bgcolor": "#d9534f",
+        "icon": "refresh",
+        "payload": "{\"label\":\"recovery\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1060,
+        "y": 1100,
+        "wires": [
+            [
+                "dataset_set_label"
+            ]
+        ]
+    },
+    {
+        "id": "btn_label_unknown_manual",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Label unknown manual",
+        "group": "grp_ui_ai_01",
+        "order": 11,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "UNKNOWN",
+        "color": "#ffffff",
+        "bgcolor": "#6c757d",
+        "icon": "help_outline",
+        "payload": "{\"label\":\"unknown\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1060,
+        "y": 1140,
+        "wires": [
+            [
+                "dataset_set_label"
+            ]
+        ]
+    },
+    {
+        "id": "btn_label_straight_long",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Label straight long",
+        "group": "grp_ui_ai_01",
+        "order": 12,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "RECTA LARGA",
+        "color": "#ffffff",
+        "bgcolor": "#155724",
+        "icon": "arrow_forward",
+        "payload": "{\"label\":\"straight_long\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1060,
+        "y": 1300,
+        "wires": [
+            [
+                "dataset_set_label"
+            ]
+        ]
+    },
+    {
+        "id": "btn_label_straight_short",
+        "type": "ui_button",
+        "z": "b1936d8f3e5a4c01",
+        "name": "Label straight short",
+        "group": "grp_ui_ai_01",
+        "order": 13,
+        "width": 3,
+        "height": 1,
+        "passthru": false,
+        "label": "RECTA CORTA",
+        "color": "#ffffff",
+        "bgcolor": "#3d6b23",
+        "icon": "arrow_right_alt",
+        "payload": "{\"label\":\"straight_short\"}",
+        "payloadType": "json",
+        "topic": "",
+        "x": 1060,
+        "y": 1340,
+        "wires": [
+            [
+                "dataset_set_label"
+            ]
+        ]
+    }
+]

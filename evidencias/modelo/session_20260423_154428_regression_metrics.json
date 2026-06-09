@@ -1,0 +1,37 @@
+{
+  "session": "session_20260423_154428",
+  "rows_raw_running": 333,
+  "rows_clean": 304,
+  "rows_removed_tail": 29,
+  "duplicates_removed": 0,
+  "missing_removed": 0,
+  "feature_names": [
+    "bias",
+    "global_progress",
+    "lap_phase",
+    "weighted_line_position",
+    "sensor_1",
+    "sensor_2",
+    "sensor_3",
+    "sensor_4",
+    "motor_a_pwm",
+    "motor_b_pwm",
+    "line_lost",
+    "sin_1",
+    "cos_1",
+    "sin_2",
+    "cos_2",
+    "sin_3",
+    "cos_3",
+    "sin_4",
+    "cos_4"
+  ],
+  "coefficients_shape": [
+    19,
+    2
+  ],
+  "r2_x": 0.9895617007733862,
+  "r2_y": 0.9895912861799956,
+  "rmse_x_cm": 3.285376427391019,
+  "rmse_y_cm": 3.4629058395301135
+}

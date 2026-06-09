@@ -1,0 +1,11 @@
+numpy
+pandas
+matplotlib
+scikit-learn
+python-docx
+reportlab
+Pillow
+paho-mqtt
+joblib
+pywin32
+pypdfium2
