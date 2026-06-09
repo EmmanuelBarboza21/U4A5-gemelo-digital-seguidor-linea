@@ -39,10 +39,10 @@ python simulador/launch_simulator_gui.py
 
 ## Evidencia De Video
 
-El video real de demostracion se encuentra en:
+El video real de demostracion se encuentra publicado como asset de release:
 
 ```text
-video/U4A5_demo_robot_real.mp4
+https://github.com/EmmanuelBarboza21/U4A5-gemelo-digital-seguidor-linea/releases/tag/video-demo
 ```
 
 ## Ciberhigiene
