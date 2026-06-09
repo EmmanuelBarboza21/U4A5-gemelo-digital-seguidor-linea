@@ -39,10 +39,10 @@ python simulador/launch_simulator_gui.py
 
 ## Evidencia De Video
 
-El video real de demostracion se encuentra publicado como asset de release:
+El video real de demostracion se encuentra disponible en Google Drive:
 
 ```text
-https://github.com/EmmanuelBarboza21/U4A5-gemelo-digital-seguidor-linea/releases/tag/video-demo
+https://drive.google.com/drive/folders/1bBfNXvskMC9Q5mihdVCJGszS6gVZNWpv?usp=drive_link
 ```
 
 ## Ciberhigiene
