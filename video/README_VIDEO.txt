@@ -1,5 +1,5 @@
-El video real de demostracion del robot esta publicado como asset de release en GitHub:
+El video real de demostracion del robot esta publicado en Google Drive:
 
-https://github.com/EmmanuelBarboza21/U4A5-gemelo-digital-seguidor-linea/releases/tag/video-demo
+https://drive.google.com/drive/folders/1bBfNXvskMC9Q5mihdVCJGszS6gVZNWpv?usp=drive_link
 
 Este archivo muestra evidencia fisica del prototipo funcionando.
